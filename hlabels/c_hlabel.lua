@@ -25,20 +25,7 @@ function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
 	local onScreen,_x,_y=World3dToScreen2d(x,y,z)
 	local px,py,pz=table.unpack(GetGameplayCamCoords())
 	local dist = GetDistanceBetweenCoords(px,py,pz, x,y,z, 1)
-	local ped_l = GetPlayerPed(-1)
-	local offs_z = 1.25
-	local mult_a = 1.00
-	local mult_s = 1.00
-		if IsPedInAnyVehicle(ped_i, true) then
-			local veh = GetVehiclePedIsUsing(ped_i)
-			if getPedVehSeat(ped_i, veh) > -1 then
-				offs_z = 1.10
-				mult_a = 0.4
-				mult_s = 0.3
-			else
-				offs_z = 1.30
-			end
-		end
+	local ped_l = PlayerPedId()
 
 	local scale = (4.00001/dist)*0.3
 	if scale > 0.2 then
@@ -66,15 +53,10 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-    	for i=0,99 do
-      	N_0x31698aa80e0223f8(i)
-    end
-    for id = 0, 31 do
-    if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= GetPlayerPed(-1) then
-        ped = GetPlayerPed(id)
-        x1, y1, z1 = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
-        x2, y2, z2 = table.unpack(GetEntityCoords(GetPlayerPed(id), true))
-        distance = math.floor(GetDistanceBetweenCoords(x1,  y1,  z1,  x2,  y2,  z2,  true))
+    	for id = 0, 255 do
+    		if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= PlayerPedId() then
+        		iPed = GetPlayerPed(id) -- indexed ped
+        		distance = math.floor(GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),  GetEntityCoords(GetPlayerPed(id)),  true))
 				if distance < disPlayerNames then
 					if not ignorePlayerNameDistance then
 						if NetworkIsPlayerTalking(id) then
