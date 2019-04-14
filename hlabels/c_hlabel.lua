@@ -2,7 +2,7 @@
 ---------------------------------------------------
 HEAD LABELS(C_HLABELS.LUA) by MrDaGree | Edited by Jack
 ---------------------------------------------------
-Last revision: APR 14 2019
+Last revision: APR 13 2018
 ---------------------------------------------------
 NOTES 
 	x Scale stays the same regarless of distance.
@@ -11,14 +11,13 @@ NOTES
 ---------------------------------------------------
 	
 ]]
-
 local showPlayerBlips = false
 local ignorePlayerNameDistance = false
 local disPlayerNames = 15
 local playerSource = 0
 
 RegisterNetEvent('setHeadLabelDistance')
-AddEventHandler('hlDIS', function(distance)
+AddEventHandler('setHeadLabelDistance', function(distance)
 	disPlayerNames = distance
 end)
 
