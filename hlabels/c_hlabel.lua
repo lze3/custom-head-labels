@@ -40,14 +40,14 @@ function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
 	if onScreen then
 		SetTextFont(4)
 		SetTextScale(scale, scale)
-    	SetTextProportional(true)
-    	SetTextColour(255, 255, 255, 255)
+		SetTextProportional(true)
+		SetTextColour(255, 255, 255, 255)
 		SetTextCentre(true)
-    	SetTextDropshadow(0, 0, 0, 0, 0)
-    	SetTextOutline()
-    	SetTextEntry("STRING")
-    	AddTextComponentString(text)
-    	DrawText(_x,_y - 0.025)
+		SetTextDropshadow(0, 0, 0, 0, 0)
+		SetTextOutline()
+		SetTextEntry("STRING")
+		AddTextComponentString(text)
+		DrawText(_x,_y - 0.025)
   	end
 end
 
