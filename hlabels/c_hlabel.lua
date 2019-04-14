@@ -11,6 +11,7 @@ NOTES
 ---------------------------------------------------
 	
 ]]
+
 local showPlayerBlips = false
 local ignorePlayerNameDistance = false
 local disPlayerNames = 15
@@ -22,9 +23,9 @@ AddEventHandler('setHeadLabelDistance', function(distance)
 end)
 
 function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
-	local onScreen,_x,_y=World3dToScreen2d(x,y,z)
-	local px,py,pz=table.unpack(GetGameplayCamCoords())
-	local dist = GetDistanceBetweenCoords(px,py,pz, x,y,z, 1)
+	local onScreen, _x, _y = World3dToScreen2d(x,y,z)
+	local px, py, pz = table.unpack(GetGameplayCamCoords())
+	local dist = GetDistanceBetweenCoords(px, py, pz, x, y, z, 1)
 	local ped_l = PlayerPedId()
 
 	local scale = (4.00001/dist)*0.3
