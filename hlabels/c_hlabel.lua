@@ -38,7 +38,7 @@ function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
 	local scale = scale*fov
 
 	if onScreen then
-    	SetTextFont(4)
+		SetTextFont(4)
 		SetTextScale(scale, scale)
     	SetTextProportional(true)
     	SetTextColour(255, 255, 255, 255)
@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
 
 		for id = 0, 255 do
 			if NetworkIsPlayerActive(id) and iPed ~= lPed then	
-							
+
 				local iPed = GetPlayerPed(id) -- indexed ped
 				local lPed = PlayerPedId() -- local ped
 				local lPlayer = PlayerId()
