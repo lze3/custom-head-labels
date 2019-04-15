@@ -51,7 +51,7 @@ Citizen.CreateThread(function()
 	while true do
 
 		for id = 0, 255 do
-			if NetworkIsPlayerActive(id)--[[ and iPed ~= lPed]] then	
+			if NetworkIsPlayerActive(id) and iPed ~= lPed then	
 
 				local iPed = GetPlayerPed(id) -- indexed ped
 				local lPed = PlayerPedId() -- local ped
