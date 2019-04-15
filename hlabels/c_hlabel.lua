@@ -1,12 +1,10 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     --[[
 ---------------------------------------------------
-HEAD LABELS(C_HLABELS.LUA) by MrDaGree | Edited by Jack
+HEAD LABELS (C_HLABELS.LUA) by MrDaGree | Edited by Jack
 ---------------------------------------------------
-Last revision: APR 13 2018
+Last revision: APR 15 2019
 ---------------------------------------------------
 NOTES 
-	x Scale stays the same regarless of distance.
-	x Working on a /hlset args command. 
 	
 ---------------------------------------------------
 	
