@@ -1,4 +1,7 @@
 {
-    "version": "1.1",
-    "changelog": "- Cleaned up code and got rid of old natives - replaced them with newer ones.\n- Changed the colour of the headlabel."
+    "version": "1.0",
+    "changelog": [
+        "- Cleaned up code and got rid of old natives - replaced them with newer ones.",
+        "- Changed the colour of the headlabel."
+    ]
 }
