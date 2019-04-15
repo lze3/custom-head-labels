@@ -22,13 +22,12 @@ AddEventHandler('setHeadLabelDistance', function(distance)
 	disPlayerNames = distance
 end)
 
-function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
-	local onScreen, _x, _y = World3dToScreen2d(x,y,z)
-	local px, py, pz = table.unpack(GetGameplayCamCoords())
-	local dist = GetDistanceBetweenCoords(px, py, pz, x, y, z, 1)
+function DrawText3D(x, y, z, text) 
+	local onScreen, _x, _y = World3dToScreen2d(x, y, z)
+	local dist = GetDistanceBetweenCoords(GetGameplayCamCoords(), x, y, z, 1)
 	local ped_l = PlayerPedId()
 
-	local scale = (4.00001/dist)*0.3
+	local scale = (4.00001/dist) * 0.3
 	if scale > 0.2 then
 		scale = 0.2
 	elseif scale < 0.15 then
@@ -42,9 +41,9 @@ function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
 		SetTextFont(4)
 		SetTextScale(scale, scale)
 		SetTextProportional(true)
-		SetTextColour(255, 255, 255, 255)
+		SetTextColour(210, 210, 210, 180)
 		SetTextCentre(true)
-		SetTextDropshadow(0, 0, 0, 0, 0)
+		SetTextDropshadow(50, 210, 210, 210, 255)
 		SetTextOutline()
 		SetTextEntry("STRING")
 		AddTextComponentString(text)
@@ -56,7 +55,7 @@ Citizen.CreateThread(function()
 	while true do
 
 		for id = 0, 255 do
-			if NetworkIsPlayerActive(id) and iPed ~= lPed then	
+			if NetworkIsPlayerActive(id)--[[ and iPed ~= lPed]] then	
 
 				local iPed = GetPlayerPed(id) -- indexed ped
 				local lPed = PlayerPedId() -- local ped
@@ -71,9 +70,9 @@ Citizen.CreateThread(function()
 					if distance < disPlayerNames then
 						if not ignorePlayerNameDistance then
 							if NetworkIsPlayerTalking(id) then
-								DrawText3D(x2, y2, z2+1, "~c~" .. GetPlayerServerId(id) .. "  |  " .. string.sub(GetPlayerName(id), 1, 44) .. "~n~~g~Talking...")
+								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(id) .. "  |  " .. string.sub(GetPlayerName(id), 1, 44) .. "~n~~g~Talking...")
 							else
-								DrawText3D(x2, y2, z2+1, "~c~" .. GetPlayerServerId(id) .. "  |  " .. string.sub(GetPlayerName(id), 1, 44) .. "")
+								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(id) .. "  |  " .. string.sub(GetPlayerName(id), 1, 44) .. "")
 							end
 						end
 					end
