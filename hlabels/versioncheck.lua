@@ -1,6 +1,6 @@
 local curVersion = json.decode(LoadResourceFile(GetCurrentResourceName(), "version.json")).version
 Citizen.CreateThread(function()
-    PerformHttpRequest("https://raw.githubusercontent.com/JHodgson1/custom-head-labels/master/version.json", function(err, response, header)
+    PerformHttpRequest("https://raw.githubusercontent.com/JHodgson1/custom-head-labels/master/hlabels/version.json", function(err, response, header)
         local data = json.decode(response)
 
         if curVersion ~= data.version and tonumber(curVersion) < tonumber(data.version) then
