@@ -19,7 +19,7 @@ AddEventHandler('setHeadLabelDistance', function(distance)
 end)
 
 function DrawText3D(x, y, z, text) 
-	local onScreen, _x, _y = World3dToScreen2d(x, y, z)
+	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z)
 	local dist = GetDistanceBetweenCoords(GetGameplayCamCoords(), x, y, z, 1)
 	local ped_l = PlayerPedId()
 
@@ -51,18 +51,18 @@ Citizen.CreateThread(function()
 	while true do
 
 		for id = 0, 255 do
-			if NetworkIsPlayerActive(id) and iPed ~= lPed then	
+			if NetworkIsPlayerActive(id) --[[ and iPed ~= lPed]] then	
 
 				local iPed = GetPlayerPed(id) -- indexed ped
 				local lPed = PlayerPedId() -- local ped
 				local lPlayer = PlayerId()
 				if DoesEntityExist(iPed) then
-					local headLabellId = CreateMpGamerTag(iPed, " ", 0, 0, " ", 0)
-										 SetMpGamerTagName(headLabelId, " ")
-										 SetMpGamerTagVisibility(headLabelId, 0, false)
-										 RemoveMpGamerTag(headLabelId)
+					local headLabelId = CreateMpGamerTag(iPed, " ", 0, 0, " ", 0)
+										SetMpGamerTagName(headLabelId, " ")
+										SetMpGamerTagVisibility(headLabelId, 0, false)
+										RemoveMpGamerTag(headLabelId)
 
-					distance = math.floor(GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),  GetEntityCoords(GetPlayerPed(id)),  true))
+					local distance = math.ceil(GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),  GetEntityCoords(GetPlayerPed(id)),  true))
 					if distance < disPlayerNames then
 						if not ignorePlayerNameDistance then
 							if NetworkIsPlayerTalking(id) then
