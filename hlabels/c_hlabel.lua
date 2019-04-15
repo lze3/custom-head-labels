@@ -10,10 +10,8 @@ NOTES
 	
 ]]
 
-local showPlayerBlips = false
 local ignorePlayerNameDistance = false
 local disPlayerNames = 15
-local playerSource = 0
 
 RegisterNetEvent('setHeadLabelDistance')
 AddEventHandler('setHeadLabelDistance', function(distance)
