@@ -4,14 +4,19 @@ Citizen.CreateThread(function()
         local data = json.decode(response)
 
         if curVersion ~= data.version and tonumber(curVersion) < tonumber(data.version) then
-            print("\n^1##################################")
-            print(GetCurrentResourceName() .. " is outdated, please consider updating.")
-            print("Current Version: " .. data.version)
-            print("Your Version: " .. curVersion)
-            print("Update Change Log:\n^5" .. data.changelog)
-            print("\n^1##################################\n^0")
+            print("\n##################################")
+            print("        ^1Version Mismatch^0              \n")
+            print("   " .. GetCurrentResourceName() .. " is ^1outdated^0, please consider updating.")
+            print("   Current Version: ^5" .. data.version .. "^0")
+            print("   Your Version: ^5" .. curVersion .. "^0\n")
+            print("   Change Log:\n^5   " .. table.concat(data.changelog, "\n   ") .. "^0")
+            print("\n##################################\n^0")
         elseif tonumber(curVersion) > tonumber(data.version) then
-            print("Your version of " .. GetCurrentResourceName() .. " appears to be higher than the latest stable version, consider downgrading to the latest " .. data.version .. " you may be on an unstable version!")
+            print("\n##################################")
+            print("        ^1Version Mismatch^0              \n")
+            print("   " .. GetCurrentResourceName() .. " is currently running a version higher than the latest stable version.\n")
+            print("   Please consider downgrading to the latest stable version as the version you are\n   currently running may contain bugs.")
+            print("\n##################################")
         else
             print("Congratulations! Your version of " .. GetCurrentResourceName() .. " is correct and up-to-date, you're awesome!")
         end
