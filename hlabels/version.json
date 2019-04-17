@@ -1,7 +1,6 @@
 {
-    "version": "1.1",
+    "version": "1.2",
     "changelog": [
-        "- Cleaned up code and got rid of old natives - replaced them with newer ones.",
-        "- Changed the colour of the headlabel."
+        "- A typo in a variable name caused further natives to not get executed, these were hiding the GTA:Online overhead names."
     ]
 }
