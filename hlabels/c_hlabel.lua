@@ -47,22 +47,21 @@ function DrawText3D(x, y, z, text)
   	end
 end
 
-Citizen.CreateThread(function()
-	while true do
-
-		for id = 0, 255 do
-			if NetworkIsPlayerActive(id) and iPed ~= lPed then	
-
-				local iPed = GetPlayerPed(id) -- indexed ped
-				local lPed = PlayerPedId() -- local ped
-				local lPlayer = PlayerId()
+function ManageHeadLabels()
+	for i = 0, 255 do
+		if NetworkIsPlayerActive(i) then
+			
+			local iPed = GetPlayerPed(i)
+			local lPed = PlayerPedId()
+			local lPlayer = PlayerId()
+			if lPed ~= iPed then
 				if DoesEntityExist(iPed) then
 					local headLabelId = CreateMpGamerTag(iPed, " ", 0, 0, " ", 0)
 										SetMpGamerTagName(headLabelId, " ")
 										SetMpGamerTagVisibility(headLabelId, 0, false)
-										RemoveMpGamerTag(headLabelId)
-
-					local distance = math.ceil(GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),  GetEntityCoords(GetPlayerPed(id)),  true))
+										RemoveMpGamerTag(headLabelId) 
+					
+					local distance = math.ceil(GetDistanceBetweenCoords(GetEntityCoords(lPed), GetEntityCoords(iPed), true))
 					if distance < disPlayerNames then
 						if not ignorePlayerNameDistance then
 							if NetworkIsPlayerTalking(id) then
@@ -75,6 +74,12 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+	end
+end
+
+Citizen.CreateThread(function()
+	while true do
+		ManageHeadLabels()
 		Citizen.Wait(0)
 	end
 end)
