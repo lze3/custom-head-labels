@@ -1,6 +1,6 @@
 {
-    "version": "1.2",
+    "version": "1.32",
     "changelog": [
-        "- A typo in a variable name caused further natives to not get executed, these were hiding the GTA:Online overhead names."
+        "- Added the option to use Comic Sans MS font! How awesome!"
     ]
 }
