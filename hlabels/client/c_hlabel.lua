@@ -10,8 +10,12 @@ NOTES
 	
 ]]
 
+local comicSans = false
 local ignorePlayerNameDistance = false
 local disPlayerNames = 15
+
+RegisterFontFile("comic")
+fontId = RegisterFontId("Comic Sans MS")
 
 RegisterNetEvent('setHeadLabelDistance')
 AddEventHandler('setHeadLabelDistance', function(distance)
@@ -34,7 +38,7 @@ function DrawText3D(x, y, z, text)
 	local scale = scale*fov
 
 	if onScreen then
-		SetTextFont(4)
+		SetTextFont(comicSans and fontId or 4)
 		SetTextScale(scale, scale)
 		SetTextProportional(true)
 		SetTextColour(210, 210, 210, 180)
