@@ -23,11 +23,11 @@ AddEventHandler('setHeadLabelDistance', function(distance)
 end)
 
 function DrawText3D(x, y, z, text) 
-	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z)
+	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z) 
 	local dist = GetDistanceBetweenCoords(GetGameplayCamCoords(), x, y, z, 1)
 	local ped_l = PlayerPedId()
 
-	local scale = (4.00001/dist) * 0.3
+	local scale = (4.00001 / dist) * 0.3
 	if scale > 0.2 then
 		scale = 0.2
 	elseif scale < 0.15 then
