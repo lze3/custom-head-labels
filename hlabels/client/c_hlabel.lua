@@ -34,8 +34,8 @@ function DrawText3D(x, y, z, text)
 		scale = 0.15
 	end
 
-	local fov = (1/GetGameplayCamFov())*100
-	local scale = scale*fov
+	local fov = (1 / GetGameplayCamFov()) * 100
+	local scale = scale * fov
 
 	if onScreen then
 		SetTextFont(comicSans and fontId or 4)
@@ -47,7 +47,7 @@ function DrawText3D(x, y, z, text)
 		SetTextOutline()
 		SetTextEntry("STRING")
 		AddTextComponentString(text)
-		DrawText(_x,_y - 0.025)
+		DrawText(_x, _y - 0.025)
   	end
 end
 
