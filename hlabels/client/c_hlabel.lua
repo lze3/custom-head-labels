@@ -65,7 +65,7 @@ function ManageHeadLabels()
 										SetMpGamerTagVisibility(headLabelId, 0, false)
 										RemoveMpGamerTag(headLabelId) 
 					
-					local distance = math.ceil(GetDistanceBetweenCoords(GetEntityCoords(lPed), GetEntityCoords(iPed), true))
+					local distance = math.ceil(#GetEntityCoords(lPed) - #GetEntityCoords(iPed))
 					if distance < disPlayerNames then
 						if not ignorePlayerNameDistance then
 							if NetworkIsPlayerTalking(i) then
