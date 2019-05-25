@@ -20,4 +20,5 @@ add_ace identifier.license:981nd981nd91uncu91n991jddjnjdndllcmmadee "hlabels" al
 |:-:|:-:|
 |`hlabels`|Every feature/command this resource provides.|
 |`hlabels.hlrange`|The `/hlrange` command.|
+
 I intend on making additional aces for certain features that may exist in the future, but currently these are the only ones that exist.
