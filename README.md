@@ -1,4 +1,4 @@
-# custom-head-labels
+# Custom Head Labels
 
 ## Installation
 
