@@ -2,7 +2,7 @@
 
 ## Installation
 
-* Run `git clone [url]` into a directory that is ignored (starts with `[` and ends with `]`.) 
+* Run `git clone [url]` into a directory that is ignored (starts with `[` and ends with `]`.)
   * `git clone https://github.com/jhodgson1/custom-head-labels.git [head-labels]`
 * Add `start hlabels` to your server config (commonly server.cfg)
 * Add the `hlabels.*` ace to your server admin's identifiers, for example:
