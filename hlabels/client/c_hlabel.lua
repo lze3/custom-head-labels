@@ -23,19 +23,19 @@ AddEventHandler('setHeadLabelDistance', function(distance)
 end)
 
 function DrawText3D(x, y, z, text) 
-	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z)
+	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z) 
 	local dist = GetDistanceBetweenCoords(GetGameplayCamCoords(), x, y, z, 1)
 	local ped_l = PlayerPedId()
 
-	local scale = (4.00001/dist) * 0.3
+	local scale = (4.00001 / dist) * 0.3
 	if scale > 0.2 then
 		scale = 0.2
 	elseif scale < 0.15 then
 		scale = 0.15
 	end
 
-	local fov = (1/GetGameplayCamFov())*100
-	local scale = scale*fov
+	local fov = (1 / GetGameplayCamFov()) * 100
+	local scale = scale * fov
 
 	if onScreen then
 		SetTextFont(comicSans and fontId or 4)
@@ -47,7 +47,7 @@ function DrawText3D(x, y, z, text)
 		SetTextOutline()
 		SetTextEntry("STRING")
 		AddTextComponentString(text)
-		DrawText(_x,_y - 0.025)
+		DrawText(_x, _y - 0.025)
   	end
 end
 
@@ -65,7 +65,7 @@ function ManageHeadLabels()
 										SetMpGamerTagVisibility(headLabelId, 0, false)
 										RemoveMpGamerTag(headLabelId) 
 					
-					local distance = math.ceil(GetDistanceBetweenCoords(GetEntityCoords(lPed), GetEntityCoords(iPed), true))
+					local distance = math.ceil(#GetEntityCoords(lPed) - #GetEntityCoords(iPed))
 					if distance < disPlayerNames then
 						if not ignorePlayerNameDistance then
 							if NetworkIsPlayerTalking(i) then
