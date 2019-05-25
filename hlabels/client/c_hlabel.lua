@@ -69,9 +69,9 @@ function ManageHeadLabels()
 					if distance < disPlayerNames then
 						if not ignorePlayerNameDistance then
 							if NetworkIsPlayerTalking(i) then
-								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. string.sub(GetPlayerName(i), 1, 44) .. "~n~~g~Talking...")
+								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. GetPlayerName(i) .. "~n~~g~Talking...")
 							else
-								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. string.sub(GetPlayerName(i), 1, 44) .. "")
+								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. GetPlayerName(i))
 							end
 						end
 					end
