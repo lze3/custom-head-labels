@@ -11,7 +11,6 @@ NOTES
 ]]
 
 local comicSans = false
-local ignorePlayerNameDistance = false
 local disPlayerNames = 15
 
 RegisterFontFile("comic")
@@ -67,13 +66,7 @@ function ManageHeadLabels()
 					
 					local distance = math.ceil(#GetEntityCoords(lPed) - #GetEntityCoords(iPed))
 					if distance < disPlayerNames then
-						if not ignorePlayerNameDistance then
-							if NetworkIsPlayerTalking(i) then
-								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. string.sub(GetPlayerName(i), 1, 44) .. "~n~~g~Talking...")
-							else
-								DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. string.sub(GetPlayerName(i), 1, 44) .. "")
-							end
-						end
+						DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. GetPlayerName(i) .. (NetworkIsPlayerTalking(i) and "~n~~g~Talking..." or ""))
 					end
 				end
 			end
