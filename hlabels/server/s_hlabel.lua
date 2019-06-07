@@ -21,7 +21,7 @@ distances = {
     ["far"] = {
         ["shortname"] = "F",
         ["name"] = "FAR",
-        ["distance"] = -1
+        ["distance"] = 999*999*999
     }
 }
 
