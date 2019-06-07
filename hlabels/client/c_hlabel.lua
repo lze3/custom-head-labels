@@ -12,6 +12,7 @@ NOTES
 
 local comicSans = false
 local disPlayerNames = 15
+local showSelf = true
 
 RegisterFontFile("comic")
 fontId = RegisterFontId("Comic Sans MS")
@@ -57,14 +58,14 @@ function ManageHeadLabels()
 			local iPed = GetPlayerPed(i)
 			local lPed = PlayerPedId()
 			local lPlayer = PlayerId()
-			if lPed ~= iPed then
+			if shouldDisplayLocally(iPed, lPed) then
 				if DoesEntityExist(iPed) then
 					local headLabelId = CreateMpGamerTag(iPed, " ", 0, 0, " ", 0)
 										SetMpGamerTagName(headLabelId, " ")
 										SetMpGamerTagVisibility(headLabelId, 0, false)
 										RemoveMpGamerTag(headLabelId) 
 					
-					local distance = math.ceil(#GetEntityCoords(lPed) - #GetEntityCoords(iPed))
+					distance = math.ceil(#GetEntityCoords(lPed) - #GetEntityCoords(iPed))
 					if distance < disPlayerNames then
 						DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. GetPlayerName(i) .. (NetworkIsPlayerTalking(i) and "~n~~g~Talking..." or ""))
 					end
@@ -80,3 +81,13 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 	end
 end)
+
+function shouldDisplayLocally(ply1, ply2)
+	if showSelf then
+		return true
+	end
+	if ply1 == ply2 then
+		return false
+	end
+	return false
+end
