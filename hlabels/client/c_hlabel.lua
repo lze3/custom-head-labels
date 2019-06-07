@@ -58,7 +58,7 @@ function ManageHeadLabels()
 			local iPed = GetPlayerPed(i)
 			local lPed = PlayerPedId()
 			local lPlayer = PlayerId()
-			if shouldDisplayLocally(iPed, lPed) then
+			if iPed ~= lPed then
 				if DoesEntityExist(iPed) then
 					local headLabelId = CreateMpGamerTag(iPed, " ", 0, 0, " ", 0)
 										SetMpGamerTagName(headLabelId, " ")
@@ -81,13 +81,3 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 	end
 end)
-
-function shouldDisplayLocally(ply1, ply2)
-	if showSelf then
-		return true
-	end
-	if ply1 == ply2 then
-		return false
-	end
-	return false
-end
