@@ -12,7 +12,6 @@ NOTES
 
 local comicSans = false
 local disPlayerNames = 15
-local showSelf = true
 
 RegisterFontFile("comic")
 fontId = RegisterFontId("Comic Sans MS")
