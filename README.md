@@ -13,7 +13,7 @@ add_ace identifier.license:2de1980f35b9fdbc19d2d5881000ab57b5097ccd "hlabels.hlr
 add_ace identifier.license:981nd981nd91uncu91n991jddjnjdndllcmmadee "hlabels" allow # this gives them access to all features that this script provides.
 ```
 
-* For a list of available aces see the [permissions list](https://github.com/JHodgson1/custom-head-labels/tree/master#permissions-list).
+* For a list of available aces see the permissions list below.
 
 ## Permissions List
 
