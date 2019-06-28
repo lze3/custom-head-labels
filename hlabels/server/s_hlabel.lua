@@ -38,7 +38,7 @@ RegisterCommand('hlrange', function(source, args)
         local shouldRun
         local range
         for k, v in pairs(distances) do
-            if v["shortname"]:lower() == args[1] then
+            if v["shortname"]:lower() == args[1]:lower() then
                 shouldRun = true
                 range = v
                 break
