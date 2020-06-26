@@ -18,6 +18,7 @@ fontId = RegisterFontId("Comic Sans MS")
 RegisterNetEvent('setHeadLabelDistance')
 AddEventHandler('setHeadLabelDistance', function(distance)
 	disPlayerNames = distance
+	TriggerServerEvent("onClientHeadLabelRangeChange", distance)
 end)
 
 local LocalPlayer = {

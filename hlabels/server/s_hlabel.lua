@@ -61,3 +61,19 @@ RegisterCommand('hlrange', function(source, args)
         color = colours.SUCCESS
     })
 end, false)
+
+RegisterNetEvent("onClientHeadLabelRangeChange")
+AddEventHandler("onClientHeadLabelRangeChange", function(change)
+    local source = source
+    -- ok, this is bad!
+    if not IsPlayerAceAllowed(source, "hlabels.hlrange") then
+        local thisResourceName = {
+            DROP = GetCurrentResourceName() .. " (hlabels)",
+            CONSOLE = "^7[^4" .. GetCurrentResourceName() .. "^7]"
+        }
+        local message = "Detected an unauthorized altercation of"
+        print("^1(ALERT) " .. thisResourceName.CONSOLE .. ": ^3" .. message .. " player [ " .. GetPlayerName(source) .. " | " .. source .. " ] head label range. ^1Dropping the " ..
+            "player from the server now.^7")
+        DropPlayer(source, "Dropped as a protection of the " .. thisResourceName.DROP .. " resource. " .. message .. " your head label range.")
+    end
+end)
