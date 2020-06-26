@@ -1,13 +1,12 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     --[[
 ---------------------------------------------------
-HEAD LABELS (C_HLABELS.LUA) by MrDaGree | Edited by Jack
+HEAD LABELS (C_HLABELS.LUA) by MrDaGree | Edited by Zeemah
 ---------------------------------------------------
-Last revision: APR 15 2019
+Last revision: JUN 26 2020
 ---------------------------------------------------
 NOTES 
-	
+
 ---------------------------------------------------
-	
 ]]
 
 local comicSans = false
@@ -21,10 +20,22 @@ AddEventHandler('setHeadLabelDistance', function(distance)
 	disPlayerNames = distance
 end)
 
-function DrawText3D(x, y, z, text) 
-	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z) 
-	local dist = GetDistanceBetweenCoords(GetGameplayCamCoords(), x, y, z, 1)
-	local ped_l = PlayerPedId()
+local LocalPlayer = {
+	Ped = {
+		Handle = 0
+	}
+}
+CreateThread(function()
+	while true do
+
+		LocalPlayer.Ped.Handle = PlayerPedId()
+		Wait(500)
+	end
+end)
+
+function DrawText3D(x, y, z, text)
+	local onScreen, _x, _y = GetScreenCoordFromWorldCoord(x, y, z)
+	local dist = #(GetGameplayCamCoords() - vec(x, y, z))
 
 	local scale = (4.00001 / dist) * 0.3
 	if scale > 0.2 then
@@ -47,26 +58,25 @@ function DrawText3D(x, y, z, text)
 		SetTextEntry("STRING")
 		AddTextComponentString(text)
 		DrawText(_x, _y - 0.025)
-  	end
+	end
 end
 
 function ManageHeadLabels()
-	for i = 0, 255 do
+	for _, i in pairs(GetActivePlayers()) do
 		if NetworkIsPlayerActive(i) then
-			
+
 			local iPed = GetPlayerPed(i)
-			local lPed = PlayerPedId()
 			local lPlayer = PlayerId()
-			if iPed ~= lPed then
+			if iPed ~= LocalPlayer.Ped.Handle then
 				if DoesEntityExist(iPed) then
 					local headLabelId = CreateMpGamerTag(iPed, " ", 0, 0, " ", 0)
 										SetMpGamerTagName(headLabelId, " ")
 										SetMpGamerTagVisibility(headLabelId, 0, false)
 										RemoveMpGamerTag(headLabelId) 
-					
-					distance = math.ceil(GetDistanceBetweenCoords(GetEntityCoords(lPed), GetEntityCoords(iPed)))
+
+					distance = #(GetEntityCoords(LocalPlayer.Ped.Handle) - GetEntityCoords(iPed))
 					if distance < disPlayerNames then
-            			DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. GetPlayerName(i) .. (NetworkIsPlayerTalking(i) and "~n~~g~Talking..." or ""))
+						DrawText3D(GetEntityCoords(iPed)["x"], GetEntityCoords(iPed)["y"], GetEntityCoords(iPed)["z"]+1, GetPlayerServerId(i) .. "  |  " .. GetPlayerName(i) .. (NetworkIsPlayerTalking(i) and "~n~~g~Talking..." or ""))
 					end
 				end
 			end
